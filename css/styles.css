@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "FuturaLight";
+    src: url("../fonts/FuturaLight.ttf");
+}
+
+@font-face {
+    font-family: "FuturaExtended";
+    src: url("../fonts/FuturaExtended.ttf");
+}
+
+@font-face {
+    font-family: "FuturaBold";
+    src: url("../fonts/FuturaKoyu.ttf");
+}
+
+body {
+    font-family: "FuturaLight";
+
+}
+
+div {
+    display: block;
+}
+
+.nav-wrapper {
+    background-color: #e708a6;
+    color:white;
+}
+
+#main {
+    width: 500px;
+    margin: auto;
+    text-align: left;
+    background: white;
+    padding: 50px 60px;
+    border: solid #ddd;
+    border-width: 0 1px 1px 1px;
+}
+
+#main h1 {
+    margin-top: 0;
+    font-size: 35px;
+}
+
+#main ul {
+    padding-left: 20px;
+}
+
+#main .error {
+    border: 1px solid red;
+    background: #FDEFF0;
+    padding: 20px;
+}
+
+#main .success {
+    margin-top: 25px;
+}
+
+#main .success code {
+    font-size: 12px;
+    color: green;
+    line-height: 13px;
+}
+
+.intro-background {
+  background-color:#0ccca0;
+  position: relative;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  min-width: 25%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.background-video {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+
+.homepage.overlay {
+  background-color: rgba(12,204,160, 0.5);
+  display:block;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index:1;
+  
+}
+
+
+
+
+

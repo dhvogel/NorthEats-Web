@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/*** Stylings by Matthew van der Haas ***/
+
+/*
+ *
+ * Generic Stylings
+ *
+ */
+ body
+ {
+ 	background-color:#000000;
+ }
+
+.hideMe
+{
+	display:none;
+}
+
+
+/*
+ *
+ * Containers
+ *
+ */
+
+#TopVideoContainer, #BottomVideoContainer
+{
+	position: absolute;
+}
+
+#TopVideoContainer
+{
+	top:0%;
+	left:0%;
+	height:50%;
+	width:100%;
+}
+
+#BottomVideoContainer
+{
+	top:50%;
+	left:0%;
+	height:50%;
+	width:100%;
+}
+
+
+video
+{
+	position:absolute;
+}
+
+video.StretchtoFit
+{
+	/* Important: No Height attribute is being specified */
+	width: 100%;
+}
+
+video.KeepAspectRatio
+{
+	/* Notice how this is set to 100% width and height, yet it still doesnt stretch! */
+	height: 100%;
+	width: 100%;
+}
