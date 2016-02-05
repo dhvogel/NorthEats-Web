@@ -23,8 +23,8 @@
         <li class="bar-item"><a href="#why">&nbsp&nbsp&nbspPricing&nbsp&nbsp&nbsp</a></li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="bar-item"><a href="#modal" onclick="$('#modal1').openModal();">&nbsp&nbsp&nbspLog In&nbsp&nbsp&nbsp</a></li>
-        <li class="bar-item"><a href="#sign-up">&nbsp&nbsp&nbspSign Up&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a href="#signin" onclick="$('#signin').openModal();">&nbsp&nbsp&nbspLog In&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a href="#signup" onclick="$('#signup').openModal();">&nbsp&nbsp&nbspSign Up&nbsp&nbsp&nbsp</a></li>
       </ul>
     </div>
   </nav>
@@ -74,20 +74,20 @@
       </div>
     </div>
 
-  <div id="modal1" class="modal">
+  <div id="signin" class="modal">
     <div class="modal-content">
       <div class="row">
         <form class="col s12">
           <div class="row">
             <div class="input-field">
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Email</label>
+              <input id="signin-email" type="text" class="validate">
+              <label for="signin-email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field">
-              <input id="icon_telephone" type="tel" class="validate">
-              <label for="icon_telephone">Password</label>
+              <input id="signin-password" type="tel" class="validate">
+              <label for="signin-password">Password</label>
             </div>
           </div>
         </form>
@@ -95,6 +95,36 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black">Sign In</a>
+    </div>
+  </div>
+
+  <div id="signup" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field">
+              <input id="signup-email" type="text" class="validate">
+              <label for="signup-email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <input id="signup-password" type="tel" class="validate">
+              <label for="signup-password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <input id="signup-retypepassword" type="tel" class="validate">
+              <label for="signup-retypepassword">Re-type Password</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black">Sign Up</a>
     </div>
   </div>
 
