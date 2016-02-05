@@ -1,6 +1,6 @@
 <html>
 <head>
-        <title>PARTY-R</title>
+        <title>NorthEats</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         
         <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -10,6 +10,7 @@
        
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.14.min.js"></script>
         <script src="js/videoStretch.js"></script>
         <script src="js/main.js"></script>
 </head>
@@ -104,19 +105,25 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field">
-              <input id="signup-email" type="text" class="validate">
+              <input id="signup-company" type="text" class="validate">
+              <label for="signup-company">Company</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <input id="signup-email" type="email" class="validate">
               <label for="signup-email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field">
-              <input id="signup-password" type="tel" class="validate">
+              <input id="signup-password" type="password" class="validate">
               <label for="signup-password">Password</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field">
-              <input id="signup-retypepassword" type="tel" class="validate">
+              <input id="signup-retypepassword" type="password" class="validate">
               <label for="signup-retypepassword">Re-type Password</label>
             </div>
           </div>
@@ -124,7 +131,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black">Sign Up</a>
+      <a class=" modal-action waves-effect waves-green btn-flat center" style="border:1px black" onclick="signUp()">Sign Up</a>
     </div>
   </div>
 
