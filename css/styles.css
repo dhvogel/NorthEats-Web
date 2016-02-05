@@ -15,6 +15,7 @@
 
 body {
     font-family: "FuturaLight";
+    color:white;
 
 }
 
@@ -22,45 +23,15 @@ div {
     display: block;
 }
 
+.black {
+    color:black;
+}
+
 .nav-wrapper {
     background-color: #e708a6;
     color:white;
 }
 
-#main {
-    width: 500px;
-    margin: auto;
-    text-align: left;
-    background: white;
-    padding: 50px 60px;
-    border: solid #ddd;
-    border-width: 0 1px 1px 1px;
-}
-
-#main h1 {
-    margin-top: 0;
-    font-size: 35px;
-}
-
-#main ul {
-    padding-left: 20px;
-}
-
-#main .error {
-    border: 1px solid red;
-    background: #FDEFF0;
-    padding: 20px;
-}
-
-#main .success {
-    margin-top: 25px;
-}
-
-#main .success code {
-    font-size: 12px;
-    color: green;
-    line-height: 13px;
-}
 
 .intro-background {
   background-color:#0ccca0;
@@ -101,9 +72,19 @@ div {
   left: 0px;
   right: 0px;
   z-index:1;
-  
+
 }
 
+.bar-item:hover a{
+    background-color:white;
+    color:black;
+}
+
+.section-title {
+    font-size:40px;
+    text-align: center;
+    padding-top:30px;
+}
 
 
 
