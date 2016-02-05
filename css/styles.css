@@ -18,6 +18,10 @@ body {
     color:white;
 }
 
+table {
+    color:black;
+}
+
 div {
     display: block;
 }
@@ -74,7 +78,22 @@ div {
 
 }
 
-.bar-item:hover a{
+.bar-item:hover a {
+    background-color:white;
+    color:black;
+}
+
+.bar-item:focus a {
+    background-color:white;
+    color:black;
+}
+
+.bar-item:active a {
+    background-color:white;
+    color:black;
+}
+
+.activeLink {
     background-color:white;
     color:black;
 }
