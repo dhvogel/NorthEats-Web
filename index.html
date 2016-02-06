@@ -24,7 +24,7 @@
         <li class="bar-item"><a href="#why">&nbsp&nbsp&nbspPricing&nbsp&nbsp&nbsp</a></li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="bar-item"><a href="#signin" onclick="$('#signin').openModal();">&nbsp&nbsp&nbspLog In&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a href="#login" onclick="$('#login').openModal();">&nbsp&nbsp&nbspLog In&nbsp&nbsp&nbsp</a></li>
         <li class="bar-item"><a href="#signup" onclick="$('#signup').openModal();">&nbsp&nbsp&nbspSign Up&nbsp&nbsp&nbsp</a></li>
       </ul>
     </div>
@@ -75,20 +75,20 @@
       </div>
     </div>
 
-  <div id="signin" class="modal">
+  <div id="login" class="modal">
     <div class="modal-content">
       <div class="row">
         <form class="col s12">
           <div class="row">
             <div class="input-field">
-              <input id="signin-email" type="text" class="validate">
-              <label for="signin-email">Email</label>
+              <input id="login-username" type="text" class="validate">
+              <label for="login-username">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field">
-              <input id="signin-password" type="tel" class="validate">
-              <label for="signin-password">Password</label>
+              <input id="login-password" type="password" class="validate">
+              <label for="login-password">Password</label>
             </div>
           </div>
         </form>
@@ -105,8 +105,8 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field">
-              <input id="signup-company" type="text" class="validate">
-              <label for="signup-company">Company</label>
+              <input id="signup-username" type="text" class="validate">
+              <label for="signup-username">Username</label>
             </div>
           </div>
           <div class="row">

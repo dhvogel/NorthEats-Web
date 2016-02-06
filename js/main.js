@@ -25,7 +25,7 @@ function signUp() {
     var email = $("#signup-email").val();
     var password = $("#signup-password").val();
     var retypepassword = $("#signup-retypepassword").val();
-    var company = $("#signup-company").val();
+    var username = $("#signup-username").val();
     if (password != retypepassword) {
         alert("Password and Retyped Password must match.")
         return
@@ -33,7 +33,7 @@ function signUp() {
     var user = new Parse.User();
     user.set("email", email);
     user.set("password", password);
-    user.set("username", company);
+    user.set("username", username);
 
 
     user.signUp(null, {
@@ -46,5 +46,29 @@ function signUp() {
         alert("Error: " + error.code + " " + error.message);
       }
     });
+}
+
+function logIn() {
+    var password = $("#login-password").val();
+    var username = $("#login-username").val();
+    if (password != retypepassword) {
+        alert("Password and Retyped Password must match.")
+        return
+    }
+
+    Parse.User.logIn(username, password, {
+      success: function(user) {
+        $('#login').closeModal();
+        window.location.href = "dashboard.html"
+      },
+      error: function(user, error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+}
+
+function logOut() {
+    Parse.User.logOut();
+    window.location.href = "index.html"
 }
 
