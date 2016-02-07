@@ -13,16 +13,24 @@ $(window).load(function() {
     })
 
 
-    // var TestObject = Parse.Object.extend("TestObject");
-    // var testObject = new TestObject();
-    //   testObject.save({foo: "bar"}, {
-    //   success: function(object) {
-    //     alert("success!");
-    //   },
-    //   error: function(model, error) {
-    //     alert("error");
-    //   }
-    // });
+    var CurrentOrders = Parse.Object.extend("Orders");
+    var query = new Parse.Query(CurrentOrders);
+    query.equalTo("filled", false);
+    query.equalTo("restaurant","Amici's Cucina");
+    query.descending("createdAt");
+    query.find({
+        success: function(results) {
+           for (var i = 0; i < results.length; i++) { 
+               var object = results[i];
+                   (function($) {
+                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + object.get('details') + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
+                   })(jQuery);
+           }
+        },
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+        }
+    });
 })
 
 function signUp() {
@@ -77,22 +85,6 @@ function logOut() {
 }
 
 function getCurrentOrders() {
-    var CurrentOrders = Parse.Object.extend("Amicis_Orders");
-    var query = new Parse.Query(CurrentOrders);
-    query.equalTo("filled", false);
-    query.descending("createdAt");
-    query.find({
-        success: function(results) {
-           for (var i = 0; i < results.length; i++) { 
-               var object = results[i];
-                   (function($) {
-                       $('#results-table').append('<tr><td>' + object.get('playerName') + '</td><td>' + object.get('score') + '</td></tr>');
-                   })(jQuery);
-           }
-        },
-        error: function(error) {
-            alert("Error: " + error.code + " " + error.message);
-        }
-    });
+
 }
 

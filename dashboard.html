@@ -28,7 +28,7 @@
   </nav>
   <div class="section-title black-text" style="padding-left:20px;padding-right:20px">
       <span>Current Orders</span>
-      <table class="highlight responsive-table">
+      <table class="highlight responsive-table" id="order-table" onload="getCurrentOrders()">
         <thead>
           <tr>
               <th data-field="time">Time of Order</th>
@@ -41,27 +41,6 @@
               <th data-field="completed">Completed</th>
           </tr>
         </thead>
-
-        <tbody>
-          <tr>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-          </tr>
-          <tr>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-          </tr>
-        </tbody>
       </table>
   </div>
 </body>
