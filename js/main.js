@@ -97,21 +97,15 @@ function getCurrentMenu() {
         success: function(results) {
            for (var i = 0; i < results.length; i++) { 
                 var object = results[i];
-                var tableID="menu-table";
-                var table = document.getElementById(tableID);
-                var rowCount = table.rows.length
-                var orderInfo = [object.get("Item"), object.get("Description"), object.get("Options"), object.get("Price")];
-                var id = "Option" + i;
-                var row = '<tr><td><input type="text" value="'+object.get("Item")+'"/></td><td><input type="text" value="'+object.get("Description")+'"/></td><td><a onclick="$(\'#options\').openModal();">' + object.get("Options") + '</a></td><td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
-                console.log(row);
-                $('#' + id).on("click", function() {
-                    alert("clicked");
-                });
-
+                var row = '<tr><td><div class="row"><input type="text" value="'+object.get("Item")+'"/></div></td>'
+                row = row + '<td><div class="row"><input type="text" value="'+object.get("Description")+'"/></div></td>'
+                row = row + '<td><div class="row"><div class="col s10"><input type="text" value="' + object.get("Options") + '" readonly/></div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="$(\'#options\').openModal();"><i class="material-icons">add</i></a></div></div></td>'
+                row = row + '<td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
                 $('#menu-table').append(row);
-
-
            }
+            var button = ''
+            $('#menu-table').append(row);
+
         },
         error: function(error) {
             alert("Error: " + error.code + " " + error.message);
