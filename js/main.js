@@ -99,10 +99,16 @@ function getCurrentMenu() {
         success: function(results) {
            for (var i = 0; i < results.length; i++) { 
                 var object = results[i];
+                var optionsHTML = '';
+                // optionsHTML = optionsHTML + '<td><div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[1] + '" readonly/></div>';
+                // optionsHTML = optionsHTML + '<div class="col s3"><input type="text" value="Min: ' + object.get("Options")[0][0] + '" readonly/></div>';
+                // optionsHTML = optionsHTML + '<div class="col s3"><input type="text" value="Max: ' + object.get("Options")[0][1] + '" readonly/></div>';
                 var row = '<tr><td><div class="row"><input type="text" value="'+object.get("Item")+'"/></div></td>'
                 row = row + '<td><div class="row"><input type="text" value="'+object.get("Description")+'"/></div></td>'
-                row = row + '<td><div class="row"><div class="col s10"><input type="text" value="' + object.get("Options") + '" readonly/></div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();"><i class="material-icons">add</i></a></div></div></td>'
-                row = row + '<td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
+                row = row + '<td><div class="row"><div class="col s10"><input type="text" value="' + object.get("Options") + '" readonly/></div>\
+                <div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
+                <i class="material-icons">add</i></a></div></div></td>'
+                row = row + '<td><div class="row"><input type="number" value="'+object.get("Price")+'"/></div></td></tr>';
                 $('#menu-table').append(row);
            }
             var button = ''
@@ -187,5 +193,9 @@ function removeOption() {
         this.optioncount--;
         $('#option-input-' + this.optioncount).remove();
     }
+}
+
+function addOptionToMenu() {
+
 }
 

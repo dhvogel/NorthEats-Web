@@ -29,7 +29,7 @@
   </nav>
   <div class="section-title black-text" style="padding-left:20px;padding-right:20px">
       <span>Update Menu</span>
-      <table class="highlight responsive-table centered" id="menu-table">
+      <table class="bordered centered" >
         <thead>
           <tr>
               <th data-field="item">Item</th>
@@ -38,7 +38,9 @@
               <th data-field="price">Price</th>
           </tr>
         </thead>
-
+        <tbody id="menu-table">
+          
+        </tbody>
       </table>
       <a class="waves-effect waves-light btn-large" onclick="saveMenu()">Save Menu Changes</a>
   </div>
@@ -95,7 +97,7 @@
               </td>
         </table>
     <div class="modal-footer">
-      <a class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black" onclick="addOption()">Add Option</a>
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black" onclick="addOptionToMenu()">Add Option</a>
     </div>
     
     </div>
