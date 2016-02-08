@@ -101,7 +101,13 @@ function getCurrentMenu() {
                 var table = document.getElementById(tableID);
                 var rowCount = table.rows.length
                 var orderInfo = [object.get("Item"), object.get("Description"), object.get("Options"), object.get("Price")];
-                var row = '<tr><td><input type="text" value="'+object.get("Item")+'"/></td><td><input type="text" value="'+object.get("Description")+'"/></td><td><input type="text" value="'+object.get("Options")+'"/></td><td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
+                var id = "Option" + i;
+                var row = '<tr><td><input type="text" value="'+object.get("Item")+'"/></td><td><input type="text" value="'+object.get("Description")+'"/></td><td><a onclick="$(\'#options\').openModal();">' + object.get("Options") + '</a></td><td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
+                console.log(row);
+                $('#' + id).on("click", function() {
+                    alert("clicked");
+                });
+
                 $('#menu-table').append(row);
 
 

@@ -33,7 +33,7 @@
           <tr>
               <th data-field="item">Item</th>
               <th data-field="description">Description</th>
-              <th data-field="options">Options</th>
+              <th data-field="options">Options (click to add)</th>
               <th data-field="price">Price</th>
           </tr>
         </thead>
@@ -41,5 +41,69 @@
       </table>
       <a class="waves-effect waves-light btn-large" onclick="saveMenu()">Save Menu Changes</a>
   </div>
+
+  <div id="options" class="modal">
+    <div class="modal-content">
+      <div class="section-title black-text" style="padding-left:20px;padding-right:20px">
+        <span>Add Option</span>
+        <table class="highlight responsive-table" id="menu-table">
+          <thead>
+            <tr>
+                <th data-field="item">Option Name</th>
+                <th data-field="description">Minimum Picked</th>
+                <th data-field="options">Maximum Picked</th>
+                <th data-field="price">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="row">
+                  <div class="input-field">
+                    <input id="item" type="text" class="validate">
+                    <label for="item">Item Name</label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="input-field">
+                    <input id="minumum" type="number" class="validate">
+                    <label for="minimum">Minimum Picked</label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="input-field">
+                    <input id="maximum" type="number" class="validate">
+                    <label for="maximum">Maximum Picked</label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="col s6">
+                    <div class="input-field">
+                      <input id="option-name" type="text" class="validate">
+                      <label for="option-name">Option Name</label>
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <div class="input-field">
+                      <input id="option-item" type="text" class="validate">
+                      <label for="option-item">Option Item</label>
+                    </div>
+                  </div>
+                </div>
+              </td>
+        </table>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black" onclick="saveMenu()">Save Menu Changes</a>
+    </div>
+    
+    </div>
+  </div>
+</div>
 </body>
 </html>
