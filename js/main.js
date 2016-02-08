@@ -117,7 +117,10 @@ function getCurrentMenu() {
 }
 
 var onModalHide = function() {
-    
+    $('#option-name').val("");
+    $('#option-minimum').val("");
+    $('#option-maximum').val("");
+    $('#option-item').val("");
 };
 
 var showOptionsModal = function() {
