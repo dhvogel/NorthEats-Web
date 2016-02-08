@@ -14,6 +14,8 @@ $(window).load(function() {
 
 
 
+
+
 })
 
 function signUp() {
@@ -99,7 +101,7 @@ function getCurrentMenu() {
                 var object = results[i];
                 var row = '<tr><td><div class="row"><input type="text" value="'+object.get("Item")+'"/></div></td>'
                 row = row + '<td><div class="row"><input type="text" value="'+object.get("Description")+'"/></div></td>'
-                row = row + '<td><div class="row"><div class="col s10"><input type="text" value="' + object.get("Options") + '" readonly/></div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="$(\'#options\').openModal();"><i class="material-icons">add</i></a></div></div></td>'
+                row = row + '<td><div class="row"><div class="col s10"><input type="text" value="' + object.get("Options") + '" readonly/></div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();"><i class="material-icons">add</i></a></div></div></td>'
                 row = row + '<td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
                 $('#menu-table').append(row);
            }
@@ -112,6 +114,17 @@ function getCurrentMenu() {
         }
     });
 
+}
+
+var onModalHide = function() {
+    
+};
+
+var showOptionsModal = function() {
+    $("#options").openModal({
+        dismissable: false,
+        complete : onModalHide
+    });
 }
 
 function saveMenu() {
@@ -156,8 +169,5 @@ function saveMenu() {
             alert("Error: " + error.message);
         }
     });
-
-    //put up all new entries
-
 }
 
