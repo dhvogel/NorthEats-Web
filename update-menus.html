@@ -75,23 +75,27 @@
               </td>
               <td>
                 <div class="row">
-                  <div class="col s6">
+                  <div class="col s5">
                     <div class="input-field">
                       <input id="option-name" type="text" class="validate">
                       <label for="option-name">Option Name</label>
                     </div>
                   </div>
-                  <div class="col s6">
-                    <div class="input-field">
-                      <input id="option-item" type="text" class="validate">
-                      <label for="option-item">Option Item</label>
+                  <div class="col s5" id="option-items">
+                    <div class="input-field" id="option-input-0">
+                      <input id="option-item-0" type="text" class="validate">
+                      <label for="option-item-0">Option Item</label>
                     </div>
+                  </div>
+                  <div class="col s2">
+                    <a class="btn-floating waves-effect waves-light green" onclick="addOption()"><i class="material-icons">add</i></a>
+                    <a class="btn-floating waves-effect waves-light red" onclick="removeOption()"><i class="material-icons">close</i></a>
                   </div>
                 </div>
               </td>
         </table>
     <div class="modal-footer">
-      <a class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black" onclick="saveMenu()">Save Menu Changes</a>
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat center" style="border:1px black" onclick="addOption()">Add Option</a>
     </div>
     
     </div>

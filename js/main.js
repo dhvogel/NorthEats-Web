@@ -173,4 +173,19 @@ function saveMenu() {
         }
     });
 }
+this.optioncount = 1;
+function addOption() {
+
+    var inputid = "option-item-" + this.optioncount;
+    var divid = "option-input-" + this.optioncount; 
+    $('#option-items').append('<div class="input-field" id ="' + divid + '"><input id="' + inputid + '" type="text" class="validate"><label for="' + inputid +'" >Option Item</label></div>');
+    this.optioncount++;
+}
+
+function removeOption() {
+    if (this.optioncount != 1) {
+        this.optioncount--;
+        $('#option-input-' + this.optioncount).remove();
+    }
+}
 
