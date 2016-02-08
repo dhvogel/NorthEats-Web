@@ -101,8 +101,8 @@ function getCurrentMenu() {
                 var table = document.getElementById(tableID);
                 var rowCount = table.rows.length
                 var orderInfo = [object.get("Item"), object.get("Description"), object.get("Options"), object.get("Price")];
-                var row = '<tr><td><input type="text" value="'+object.get("Item")+'"/></td><td><input type="text" value="'+object.get("Description")+'"/></td><td><input type="text" value="'+object.get("Options")[0][1]+'"/></td><td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
-                jQuery('#menu-table').append(row);
+                var row = '<tr><td><input type="text" value="'+object.get("Item")+'"/></td><td><input type="text" value="'+object.get("Description")+'"/></td><td><input type="text" value="'+object.get("Options")+'"/></td><td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
+                $('#menu-table').append(row);
 
 
            }
@@ -111,6 +111,53 @@ function getCurrentMenu() {
             alert("Error: " + error.code + " " + error.message);
         }
     });
+
+}
+
+function saveMenu() {
+    //delete all old entries
+    var CurrentMenu = Parse.Object.extend("Amicis");
+    var query = new Parse.Query(CurrentMenu);
+    query.find({
+        success: function(results) {
+            for (var i=0; i<results.length;i++) {
+                results[i].destroy();
+                alert("Destroy: " + i);
+            }   
+
+            $('#menu-table tr').each(function() {
+                if (!this.rowIndex) return; 
+                var item = "Test";
+                console.log(item);
+                var description = "Test";
+                var options = ["Test"];
+                var price = 69.69;
+
+                var MenuItem = Parse.Object.extend("Amicis");
+                var menuItem = new MenuItem();
+
+                menuItem.set("Item", item);
+                menuItem.set("Description", description);
+                //need to do options config...
+                menuItem.set("Options", options);
+                menuItem.set("Price", price);
+
+                menuItem.save(null, {
+                    success: function(menuItem) {
+                        alert("created!");
+                    },
+                    error: function (menuItem, error) {
+                        alert('Failed to create new object, with error code: ' + error.message);
+                    }
+                })  
+            })        
+        },
+        error: function(error) {
+            alert("Error: " + error.message);
+        }
+    });
+
+    //put up all new entries
 
 }
 
