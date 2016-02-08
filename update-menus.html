@@ -12,7 +12,7 @@
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.6.14.min.js"></script>
         <script src="js/main.js"></script>
 </head>
-<body>
+<body onload="getCurrentMenu()">
 <nav>
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down active-nav ">
@@ -26,3 +26,19 @@
       </ul>
     </div>
   </nav>
+  <div class="section-title black-text" style="padding-left:20px;padding-right:20px">
+      <span>Update Menu</span>
+      <table class="highlight responsive-table" id="menu-table">
+        <thead>
+          <tr>
+              <th data-field="item">Item</th>
+              <th data-field="description">Description</th>
+              <th data-field="options">Options</th>
+              <th data-field="price">Price</th>
+          </tr>
+        </thead>
+
+      </table>
+  </div>
+</body>
+</html>

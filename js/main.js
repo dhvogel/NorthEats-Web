@@ -13,24 +13,7 @@ $(window).load(function() {
     })
 
 
-    var CurrentOrders = Parse.Object.extend("Orders");
-    var query = new Parse.Query(CurrentOrders);
-    query.equalTo("filled", false);
-    query.equalTo("restaurant","Amici's Cucina");
-    query.descending("createdAt");
-    query.find({
-        success: function(results) {
-           for (var i = 0; i < results.length; i++) { 
-               var object = results[i];
-                   (function($) {
-                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + object.get('details') + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
-                   })(jQuery);
-           }
-        },
-        error: function(error) {
-            alert("Error: " + error.code + " " + error.message);
-        }
-    });
+
 })
 
 function signUp() {
@@ -85,6 +68,49 @@ function logOut() {
 }
 
 function getCurrentOrders() {
+    var CurrentOrders = Parse.Object.extend("Orders");
+    var query = new Parse.Query(CurrentOrders);
+    query.equalTo("filled", false);
+    query.equalTo("restaurant","Amici's Cucina");
+    query.descending("createdAt");
+    query.find({
+        success: function(results) {
+           for (var i = 0; i < results.length; i++) { 
+               var object = results[i];
+                   (function($) {
+                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + object.get('details') + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
+                   })(jQuery);
+           }
+        },
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+        }
+    });
+
+}
+
+function getCurrentMenu() {
+    ////need to make this general --> get class name as field in user object
+    var CurrentOrders = Parse.Object.extend("Amicis");
+    var query = new Parse.Query(CurrentOrders);
+    query.find({
+        success: function(results) {
+           for (var i = 0; i < results.length; i++) { 
+                var object = results[i];
+                var tableID="menu-table";
+                var table = document.getElementById(tableID);
+                var rowCount = table.rows.length
+                var orderInfo = [object.get("Item"), object.get("Description"), object.get("Options"), object.get("Price")];
+                var row = '<tr><td><input type="text" value="'+object.get("Item")+'"/></td><td><input type="text" value="'+object.get("Description")+'"/></td><td><input type="text" value="'+object.get("Options")[0][1]+'"/></td><td><input type="number" value="'+object.get("Price")+'"/></td></tr>';
+                jQuery('#menu-table').append(row);
+
+
+           }
+        },
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+        }
+    });
 
 }
 
