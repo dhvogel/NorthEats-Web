@@ -98,25 +98,28 @@ function getCurrentMenu() {
     query.find({
         success: function(results) {
            for (var i = 0; i < results.length; i++) { 
+                console.log("thru");
                 var object = results[i];
-                var optionsHTML = '';
-                optionsHTML = optionsHTML + '<td><div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[0][1] + '" readonly/></div>';
-                optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min: ' + object.get("Options")[0][0][0] + '" readonly/></div>';
-                optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max: ' + object.get("Options")[0][0][1]+ '" readonly/></div>';
-                optionsHTML = optionsHTML + '<div class="col s3">';
-                for (var j=0; j<object.get("Options")[0][2].length; j++) {
-                    optionsHTML = optionsHTML + '<input type="text" value="' + object.get("Options")[0][2][j] + '" readonly></input>';
+                var optionsHTML = '<td>';
+                for (var k=0; k<object.get("Options").length; k++) {
+                    optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[k][1] + '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min: ' + object.get("Options")[k][0][0] + '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max: ' + object.get("Options")[k][0][1]+ '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s3">';
+                    for (var j=0; j<object.get("Options")[k][2].length; j++) {
+                        optionsHTML = optionsHTML + '<input type="text" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
+                    }
+                    optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
+                    <i class="material-icons">add</i></a></div></div>';
                 }
-                optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
-                <i class="material-icons">add</i></a></div></div></td></div>';
+                optionsHTML = optionsHTML + '</td>';
                 var row = '<tr><td><div class="row"><input type="text" value="'+object.get("Item")+'"/></div></td>'
                 row = row + '<td><div class="row"><input type="text" value="'+object.get("Description")+'"/></div></td>'
                 row = row + optionsHTML;
                 row = row + '<td><div class="row"><input type="number" value="'+object.get("Price")+'"/></div></td></tr>';
                 $('#menu-table').append(row);
            }
-            var button = ''
-            $('#menu-table').append(row);
+
 
         },
         error: function(error) {
