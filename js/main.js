@@ -19,7 +19,6 @@ $(window).load(function() {
 })
 
 this.optioncount = 1;
-this.itemcount = 0;
 
 function signUp() {
     var email = $("#signup-email").val();
@@ -117,12 +116,11 @@ function getCurrentMenu() {
                     }
                 }
                 optionsHTML = optionsHTML + '</td>';
-                var row = '<tr><td><div class="row"><input id="item-'+ this.itemcount +'" type="text" value="'+object.get("Item")+'"/></div></td>'
-                row = row + '<td><div class="row"><input id="desc-' + this.itemcount +'"type="text" value="'+object.get("Description")+'"/></div></td>'
+                var row = '<tr><td><div class="row"><input id="item-'+ ($('#menu-table').length-1) +'" type="text" value="'+object.get("Item")+'"/></div></td>'
+                row = row + '<td><div class="row"><input id="desc-' + ($('#menu-table').length-1) +'"type="text" value="'+object.get("Description")+'"/></div></td>'
                 row = row + optionsHTML;
-                row = row + '<td><div class="row"><input id="price-' + this.itemcount +'" type="number" value="'+object.get("Price")+'"/></div></td></tr>';
+                row = row + '<td><div class="row"><input id="price-' + ($('#menu-table').length-1) +'" type="number" value="'+object.get("Price")+'"/></div></td></tr>';
                 $('#menu-table').append(row);
-                this.itemcount++;
            }
 
 
@@ -159,18 +157,19 @@ function saveMenu() {
     query.find({
         success: function(results) {
             for (var i=0; i<results.length;i++) {
-                //results[i].destroy();
+                results[i].destroy();
                 alert("Destroy: " + i);
             }
 
-            alert(this.itemcount);   
+            var rows = $('#menu-table').length;   
 
-            for (var i=0; i<this.itemcount; i++){
-                if (!this.rowIndex) return; 
+            for (var i=0; i<rows; i++){
+                alert("thru");
                 var item = $('#item-' + i).val();
+                alert(item);
                 var description = $('#desc-' + i).val();
                 var options = [[[1,1],"sdlkfj",["Test","Test"]]];
-                var price = $('#price-' + i).val();
+                var price = Number($('#price-' + i).val());
 
                 var MenuItem = Parse.Object.extend("Amicis");
                 var menuItem = new MenuItem();
@@ -182,7 +181,7 @@ function saveMenu() {
                 menuItem.set("Price", price);
 
                 menuItem.save(null, {
-                    success: function(menuItem) {
+                   success: function(menuItem) {
                         alert("created!");
                     },
                     error: function (menuItem, error) {
