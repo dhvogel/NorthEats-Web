@@ -117,10 +117,11 @@ function getCurrentMenu() {
                     }
                 }
                 optionsHTML = optionsHTML + '</td>';
-                var row = '<tr><td><div class="row"><input id="item-'+ ($("#menu-table tr").length) +'" type="text" value="'+object.get("Item")+'"/></div></td>'
+                var row = '<tr id="menu-item-'+ ($("#menu-table tr").length) +'"><td><div class="row"><input id="item-'+ ($("#menu-table tr").length) +'" type="text" value="'+object.get("Item")+'"/></div></td>'
                 row = row + '<td><div class="row"><input id="desc-' + ($("#menu-table tr").length) +'"type="text" value="'+object.get("Description")+'"/></div></td>'
                 row = row + optionsHTML;
-                row = row + '<td><div class="row"><input id="price-' + ($("#menu-table tr").length) +'" type="number" value="'+object.get("Price")+'"/></div></td></tr>';
+                row = row + '<td><div class="row"><input id="price-' + ($("#menu-table tr").length) +'" type="number" value="'+object.get("Price")+'"/></div></td>'
+                row = row + '<td><a class="btn-floating btn-small waves-effect waves-light red" name="'+ ($("#menu-table tr").length) +'" onclick="removeMenuItem($(this))"><i class="material-icons">close</i></a></td></tr>'
                 $('#menu-table').append(row);
            }
 
@@ -133,8 +134,12 @@ function getCurrentMenu() {
 
 }
 
+function removeMenuItem(sender) {
+    var row = sender.attr("name");
+    $("#menu-item-"+row).remove()
+}
+
 function showOptionMenu(button) {
-    alert(button.attr("id"));
     showOptionsModal();
     $("#option-button").attr("name", button.attr("id"));
 }
