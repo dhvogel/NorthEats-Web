@@ -116,10 +116,10 @@ function getCurrentMenu() {
                     }
                 }
                 optionsHTML = optionsHTML + '</td>';
-                var row = '<tr><td><div class="row"><input id="item-'+ ($('#menu-table').length-1) +'" type="text" value="'+object.get("Item")+'"/></div></td>'
-                row = row + '<td><div class="row"><input id="desc-' + ($('#menu-table').length-1) +'"type="text" value="'+object.get("Description")+'"/></div></td>'
+                var row = '<tr><td><div class="row"><input id="item-'+ ($("#menu-table tr").length) +'" type="text" value="'+object.get("Item")+'"/></div></td>'
+                row = row + '<td><div class="row"><input id="desc-' + ($("#menu-table tr").length) +'"type="text" value="'+object.get("Description")+'"/></div></td>'
                 row = row + optionsHTML;
-                row = row + '<td><div class="row"><input id="price-' + ($('#menu-table').length-1) +'" type="number" value="'+object.get("Price")+'"/></div></td></tr>';
+                row = row + '<td><div class="row"><input id="price-' + ($("#menu-table tr").length) +'" type="number" value="'+object.get("Price")+'"/></div></td></tr>';
                 $('#menu-table').append(row);
            }
 
@@ -161,12 +161,10 @@ function saveMenu() {
                 alert("Destroy: " + i);
             }
 
-            var rows = $('#menu-table').length;   
+            var rows = $("#menu-table tr").length   
 
             for (var i=0; i<rows; i++){
-                alert("thru");
                 var item = $('#item-' + i).val();
-                alert(item);
                 var description = $('#desc-' + i).val();
                 var options = [[[1,1],"sdlkfj",["Test","Test"]]];
                 var price = Number($('#price-' + i).val());
