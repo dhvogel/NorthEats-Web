@@ -18,6 +18,9 @@ $(window).load(function() {
 
 })
 
+this.optioncount = 1;
+this.itemcount = 0;
+
 function signUp() {
     var email = $("#signup-email").val();
     var password = $("#signup-password").val();
@@ -98,9 +101,8 @@ function getCurrentMenu() {
     query.find({
         success: function(results) {
            for (var i = 0; i < results.length; i++) { 
-                console.log("thru");
                 var object = results[i];
-                var optionsHTML = '<td>';
+                var optionsHTML = '<td id="optionstd">';
                 for (var k=0; k<object.get("Options").length; k++) {
                     optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[k][1] + '" readonly/></div>';
                     optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min: ' + object.get("Options")[k][0][0] + '" readonly/></div>';
@@ -109,15 +111,18 @@ function getCurrentMenu() {
                     for (var j=0; j<object.get("Options")[k][2].length; j++) {
                         optionsHTML = optionsHTML + '<input type="text" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
                     }
-                    optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
-                    <i class="material-icons">add</i></a></div></div>';
+                    if (k == 0) {
+                        optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
+                        <i class="material-icons">add</i></a></div></div>';
+                    }
                 }
                 optionsHTML = optionsHTML + '</td>';
-                var row = '<tr><td><div class="row"><input type="text" value="'+object.get("Item")+'"/></div></td>'
-                row = row + '<td><div class="row"><input type="text" value="'+object.get("Description")+'"/></div></td>'
+                var row = '<tr><td><div class="row"><input id="item-'+ this.itemcount +'" type="text" value="'+object.get("Item")+'"/></div></td>'
+                row = row + '<td><div class="row"><input id="desc-' + this.itemcount +'"type="text" value="'+object.get("Description")+'"/></div></td>'
                 row = row + optionsHTML;
-                row = row + '<td><div class="row"><input type="number" value="'+object.get("Price")+'"/></div></td></tr>';
+                row = row + '<td><div class="row"><input id="price-' + this.itemcount +'" type="number" value="'+object.get("Price")+'"/></div></td></tr>';
                 $('#menu-table').append(row);
+                this.itemcount++;
            }
 
 
@@ -129,17 +134,21 @@ function getCurrentMenu() {
 
 }
 
-var onModalHide = function() {
+function onModalHide() {
     $('#option-name').val("");
     $('#option-minimum').val("");
     $('#option-maximum').val("");
-    $('#option-item').val("");
+    $('#option-item-0').val("");
+    while (this.optioncount != 1) {
+        this.optioncount--;
+        $('#option-input-' + this.optioncount).remove();
+    }
 };
 
 var showOptionsModal = function() {
     $("#options").openModal({
         dismissable: false,
-        complete : onModalHide
+        complete : onModalHide()
     });
 }
 
@@ -150,17 +159,18 @@ function saveMenu() {
     query.find({
         success: function(results) {
             for (var i=0; i<results.length;i++) {
-                results[i].destroy();
+                //results[i].destroy();
                 alert("Destroy: " + i);
-            }   
+            }
 
-            $('#menu-table tr').each(function() {
+            alert(this.itemcount);   
+
+            for (var i=0; i<this.itemcount; i++){
                 if (!this.rowIndex) return; 
-                var item = "Test";
-                console.log(item);
-                var description = "Test";
-                var options = ["Test"];
-                var price = 69.69;
+                var item = $('#item-' + i).val();
+                var description = $('#desc-' + i).val();
+                var options = [[[1,1],"sdlkfj",["Test","Test"]]];
+                var price = $('#price-' + i).val();
 
                 var MenuItem = Parse.Object.extend("Amicis");
                 var menuItem = new MenuItem();
@@ -179,14 +189,14 @@ function saveMenu() {
                         alert('Failed to create new object, with error code: ' + error.message);
                     }
                 })  
-            })        
+            }        
         },
         error: function(error) {
             alert("Error: " + error.message);
         }
     });
 }
-this.optioncount = 1;
+
 function addOption() {
 
     var inputid = "option-item-" + this.optioncount;
@@ -203,6 +213,20 @@ function removeOption() {
 }
 
 function addOptionToMenu() {
+        var optionsHTML = '';
+        optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + $('#option-name').val() + '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Min: ' + $('#option-minimum').val() + '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max: ' + $('#option-maximum').val()+ '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s3">';
+        for (var k=0; k<this.optioncount; k++) {
+            var divid = "#option-item-" + k; 
+            if ($(divid).val() == "") {
+                alert("Must enter a value for options");
+                return
+            }
+            optionsHTML = optionsHTML + '<input type="text" value="' + $(divid).val() + '" readonly></input>';
+        }
+    $('#optionstd').append(optionsHTML);
 
 }
 
