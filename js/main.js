@@ -101,7 +101,7 @@ function getCurrentMenu() {
         success: function(results) {
            for (var i = 0; i < results.length; i++) { 
                 var object = results[i];
-                var optionsHTML = '<td id="optionstd">';
+                var optionsHTML = '<td id="optionstd-' + $("#menu-table tr").length + '">';
                 for (var k=0; k<object.get("Options").length; k++) {
                     optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[k][1] + '" readonly/></div>';
                     optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min: ' + object.get("Options")[k][0][0] + '" readonly/></div>';
@@ -111,7 +111,8 @@ function getCurrentMenu() {
                         optionsHTML = optionsHTML + '<input type="text" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
                     }
                     if (k == 0) {
-                        optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
+                        optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
+                        optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))">\
                         <i class="material-icons">add</i></a></div></div>';
                     }
                 }
@@ -130,6 +131,12 @@ function getCurrentMenu() {
         }
     });
 
+}
+
+function showOptionMenu(button) {
+    alert(button.attr("id"));
+    showOptionsModal();
+    $("#option-button").attr("name", button.attr("id"));
 }
 
 function onModalHide() {
@@ -166,6 +173,7 @@ function saveMenu() {
             for (var i=0; i<rows; i++){
                 var item = $('#item-' + i).val();
                 var description = $('#desc-' + i).val();
+
                 var options = [[[1,1],"sdlkfj",["Test","Test"]]];
                 var price = Number($('#price-' + i).val());
 
@@ -209,7 +217,7 @@ function removeOption() {
     }
 }
 
-function addOptionToMenu() {
+function addOptionToMenu(row) {
         var optionsHTML = '';
         optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + $('#option-name').val() + '" readonly/></div>';
         optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Min: ' + $('#option-minimum').val() + '" readonly/></div>';
@@ -223,7 +231,7 @@ function addOptionToMenu() {
             }
             optionsHTML = optionsHTML + '<input type="text" value="' + $(divid).val() + '" readonly></input>';
         }
-    $('#optionstd').append(optionsHTML);
+    $('#optionstd-' + (row)).append(optionsHTML);
 
 }
 
