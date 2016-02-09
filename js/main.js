@@ -101,11 +101,11 @@ function getCurrentMenu() {
                 var object = results[i];
                 var optionsHTML = '';
                 optionsHTML = optionsHTML + '<td><div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[0][1] + '" readonly/></div>';
-                optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min:  + object.get("Options")[0][0] + " readonly/></div>';
-                optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max:  + object.get("Options")[0][1]+ " readonly/></div>';
+                optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min: ' + object.get("Options")[0][0][0] + '" readonly/></div>';
+                optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max: ' + object.get("Options")[0][0][1]+ '" readonly/></div>';
                 optionsHTML = optionsHTML + '<div class="col s3">';
-                for (var j=0; j<3; j++) {
-                    optionsHTML = optionsHTML + '<input type="text" value="Price:  + object.get("Options")[2][i] + " readonly></input>';
+                for (var j=0; j<object.get("Options")[0][2].length; j++) {
+                    optionsHTML = optionsHTML + '<input type="text" value="' + object.get("Options")[0][2][j] + '" readonly></input>';
                 }
                 optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green" onclick="showOptionsModal();">\
                 <i class="material-icons">add</i></a></div></div></td></div>';
