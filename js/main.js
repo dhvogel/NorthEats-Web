@@ -103,12 +103,12 @@ function getCurrentMenu() {
                 var object = results[i];
                 var optionsHTML = '<td id="optionstd-' + $("#menu-table tr").length + '">';
                 for (var k=0; k<object.get("Options").length; k++) {
-                    optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + object.get("Options")[k][1] + '" readonly/></div>';
-                    optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value=" Min: ' + object.get("Options")[k][0][0] + '" readonly/></div>';
-                    optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max: ' + object.get("Options")[k][0][1]+ '" readonly/></div>';
-                    optionsHTML = optionsHTML + '<div class="col s3">';
+                    optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" name="Name" value="' + object.get("Options")[k][1] + '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s2"><input type="number" name="Min" value="' + object.get("Options")[k][0][0] + '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s2"><input type="number" name="Max" value="' + object.get("Options")[k][0][1]+ '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s3" id="options-table-' + $("#menu-table tr").length + '">';
                     for (var j=0; j<object.get("Options")[k][2].length; j++) {
-                        optionsHTML = optionsHTML + '<input type="text" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
+                        optionsHTML = optionsHTML + '<input type="text" name="Option" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
                     }
                     if (k == 0) {
                         optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
@@ -197,8 +197,21 @@ function saveMenu() {
             for (var i=0; i<rows; i++){
                 var item = $('#item-' + i).val();
                 var description = $('#desc-' + i).val();
+                var options = []
+                
+                $("#optionstd-" + i + "  > div").each(function() {
+                    var curOpts = [];
+                    var optMin = $(this).find("input[name='Min']").val();
+                    var optMax = $(this).find("input[name='Max']").val();
+                    var optName = $(this).find("input[name='Name']").val();
+                    $(this).find("input[name='Option']").each(function() {
+                        curOpts.push($(this).val());
+                    });
+                    options.push([[Number(optMin), Number(optMax)], optName, curOpts]);
+                    console.log(options);
 
-                var options = [[[1,1],"sdlkfj",["Test","Test"]]];
+                });
+                console.log("out");
                 var price = Number($('#price-' + i).val());
 
                 var MenuItem = Parse.Object.extend("Amicis");
@@ -243,9 +256,9 @@ function removeOption() {
 
 function addOptionToMenu(row) {
         var optionsHTML = '';
-        optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="Name: ' + $('#option-name').val() + '" readonly/></div>';
-        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Min: ' + $('#option-minimum').val() + '" readonly/></div>';
-        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="Max: ' + $('#option-maximum').val()+ '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" name="Name" value="' + $('#option-name').val() + '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" name="Min" value="' + $('#option-minimum').val() + '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" name="Max" value="' + $('#option-maximum').val()+ '" readonly/></div>';
         optionsHTML = optionsHTML + '<div class="col s3">';
         for (var k=0; k<this.optioncount; k++) {
             var divid = "#option-item-" + k; 
@@ -253,7 +266,7 @@ function addOptionToMenu(row) {
                 alert("Must enter a value for options");
                 return
             }
-            optionsHTML = optionsHTML + '<input type="text" value="' + $(divid).val() + '" readonly></input>';
+            optionsHTML = optionsHTML + '<input type="text" name="Option" value="' + $(divid).val() + '" readonly></input>';
         }
     $('#optionstd-' + (row)).append(optionsHTML);
 
