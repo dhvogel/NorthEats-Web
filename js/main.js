@@ -104,14 +104,16 @@ function getCurrentMenu() {
                 var optionsHTML = '<td id="optionstd-' + $("#menu-table tr").length + '">';
                 for (var k=0; k<object.get("Options").length; k++) {
                     optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" name="Name" value="' + object.get("Options")[k][1] + '" readonly/></div>';
-                    optionsHTML = optionsHTML + '<div class="col s2"><input type="number" name="Min" value="' + object.get("Options")[k][0][0] + '" readonly/></div>';
-                    optionsHTML = optionsHTML + '<div class="col s2"><input type="number" name="Max" value="' + object.get("Options")[k][0][1]+ '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s1"><input type="number" name="Min" value="' + object.get("Options")[k][0][0] + '" readonly/></div>';
+                    optionsHTML = optionsHTML + '<div class="col s1"><input type="number" name="Max" value="' + object.get("Options")[k][0][1]+ '" readonly/></div>';
                     optionsHTML = optionsHTML + '<div class="col s3" id="options-table-' + $("#menu-table tr").length + '">';
                     for (var j=0; j<object.get("Options")[k][2].length; j++) {
                         optionsHTML = optionsHTML + '<input type="text" name="Option" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
                     }
+                    optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light red" onclick="removeOption($(this))"><i class="material-icons">close</i></a></div>'
                     if (k == 0) {
-                        optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
+
+                        optionsHTML = optionsHTML + '<div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
                         optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))">\
                         <i class="material-icons">add</i></a></div></div>';
                     }
@@ -136,11 +138,11 @@ function getCurrentMenu() {
 
 function addMenuItem() {
     var optionsHTML = '<td id="optionstd-' + $("#menu-table tr").length + '">';
-    optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" value="" readonly/></div>';
-    optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="" readonly/></div>';
-    optionsHTML = optionsHTML + '<div class="col s2"><input type="text" value="" readonly/></div>';
-    optionsHTML = optionsHTML + '<div class="col s3">';
-    optionsHTML = optionsHTML + '<input type="text" value="" readonly></input>';
+    optionsHTML = optionsHTML + '<div class="row"><div class="col s3">&nbsp</div>';
+    optionsHTML = optionsHTML + '<div class="col s2">&nbsp</div>';
+    optionsHTML = optionsHTML + '<div class="col s2">&nbsp</div>';
+    optionsHTML = optionsHTML + '<div class="col s3">&nbsp';
+    optionsHTML = optionsHTML + '';
     optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
     optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))"><i class="material-icons">add</i></a></div></div>';
     optionsHTML = optionsHTML + '</td>';
@@ -189,7 +191,6 @@ function saveMenu() {
         success: function(results) {
             for (var i=0; i<results.length;i++) {
                 results[i].destroy();
-                alert("Destroy: " + i);
             }
 
             var rows = $("#menu-table tr").length   
@@ -197,6 +198,15 @@ function saveMenu() {
             for (var i=0; i<rows; i++){
                 var item = $('#item-' + i).val();
                 var description = $('#desc-' + i).val();
+                var price = Number($('#price-' + i).val());
+                if (item == "") {
+                    alert("Error: Must enter name for all menu items");
+                    return;
+                }
+                if (price == "") {
+                    alert("Error: Must enter price for all menu items");
+                    return;
+                }
                 var options = []
                 
                 $("#optionstd-" + i + "  > div").each(function() {
@@ -204,15 +214,17 @@ function saveMenu() {
                     var optMin = $(this).find("input[name='Min']").val();
                     var optMax = $(this).find("input[name='Max']").val();
                     var optName = $(this).find("input[name='Name']").val();
+                    if (optName == null) {
+                        alert("null");
+                        return;
+                    }
                     $(this).find("input[name='Option']").each(function() {
                         curOpts.push($(this).val());
                     });
                     options.push([[Number(optMin), Number(optMax)], optName, curOpts]);
-                    console.log(options);
 
                 });
-                console.log("out");
-                var price = Number($('#price-' + i).val());
+                
 
                 var MenuItem = Parse.Object.extend("Amicis");
                 var menuItem = new MenuItem();
@@ -225,13 +237,14 @@ function saveMenu() {
 
                 menuItem.save(null, {
                    success: function(menuItem) {
-                        alert("created!");
                     },
                     error: function (menuItem, error) {
                         alert('Failed to create new object, with error code: ' + error.message);
+                        return;
                     }
                 })  
-            }        
+            }
+            alert("Menu Updated!");        
         },
         error: function(error) {
             alert("Error: " + error.message);
@@ -256,9 +269,9 @@ function removeOption() {
 
 function addOptionToMenu(row) {
         var optionsHTML = '';
-        optionsHTML = optionsHTML + '<div class="row"><div class="col s3"><input type="text" name="Name" value="' + $('#option-name').val() + '" readonly/></div>';
-        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" name="Min" value="' + $('#option-minimum').val() + '" readonly/></div>';
-        optionsHTML = optionsHTML + '<div class="col s2"><input type="text" name="Max" value="' + $('#option-maximum').val()+ '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="row" id="dfsoidjf"><div class="col s3"><input type="text" name="Name" value="' + $('#option-name').val() + '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s1"><input type="text" name="Min" value="' + $('#option-minimum').val() + '" readonly/></div>';
+        optionsHTML = optionsHTML + '<div class="col s1"><input type="text" name="Max" value="' + $('#option-maximum').val()+ '" readonly/></div>';
         optionsHTML = optionsHTML + '<div class="col s3">';
         for (var k=0; k<this.optioncount; k++) {
             var divid = "#option-item-" + k; 
@@ -268,7 +281,12 @@ function addOptionToMenu(row) {
             }
             optionsHTML = optionsHTML + '<input type="text" name="Option" value="' + $(divid).val() + '" readonly></input>';
         }
+        optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light red" onclick="removeOption($(this))"><i class="material-icons">close</i></a></div></div>'
     $('#optionstd-' + (row)).append(optionsHTML);
 
+}
+
+function removeOption(sender) {
+    sender.parent().parent().remove()
 }
 
