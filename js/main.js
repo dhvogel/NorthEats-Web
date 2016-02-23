@@ -93,6 +93,26 @@ function getCurrentOrders() {
 
 }
 
+function getOrderHistory() {
+    var CurrentOrders = Parse.Object.extend("Orders");
+    var query = new Parse.Query(CurrentOrders);
+    query.equalTo("restaurant","Amici's Cucina");
+    query.descending("createdAt");
+    query.find({
+        success: function(results) {
+           for (var i = 0; i < results.length; i++) { 
+               var object = results[i];
+                   (function($) {
+                       $('#order-history').append('<tr><td>' + object.get('createdAt') + '</td><td>' + object.get('details') + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
+                   })(jQuery);
+           }
+        },
+        error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+        }
+    });
+}
+
 function getCurrentMenu() {
     ////need to make this general --> get class name as field in user object
     var CurrentOrders = Parse.Object.extend("Amicis");
@@ -110,14 +130,13 @@ function getCurrentMenu() {
                     for (var j=0; j<object.get("Options")[k][2].length; j++) {
                         optionsHTML = optionsHTML + '<input type="text" name="Option" value="' + object.get("Options")[k][2][j] + '" readonly></input>';
                     }
-                    optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light red" onclick="removeOption($(this))"><i class="material-icons">close</i></a></div>'
-                    if (k == 0) {
+                    optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light red" onclick="removeOption($(this))"><i class="material-icons">close</i></a></div></div>'
 
-                        optionsHTML = optionsHTML + '<div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
+                        
+                }
+                optionsHTML = optionsHTML + '<div class="col s2"><a  style="float:right" class="btn-floating btn-small waves-effect waves-light green"';
                         optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))">\
                         <i class="material-icons">add</i></a></div></div>';
-                    }
-                }
                 optionsHTML = optionsHTML + '</td>';
                 var row = '<tr id="menu-item-'+ ($("#menu-table tr").length) +'"><td><div class="row"><input id="item-'+ ($("#menu-table tr").length) +'" type="text" value="'+object.get("Item")+'"/></div></td>'
                 row = row + '<td><div class="row"><input id="desc-' + ($("#menu-table tr").length) +'"type="text" value="'+object.get("Description")+'"/></div></td>'
@@ -141,10 +160,9 @@ function addMenuItem() {
     optionsHTML = optionsHTML + '<div class="row"><div class="col s3">&nbsp</div>';
     optionsHTML = optionsHTML + '<div class="col s2">&nbsp</div>';
     optionsHTML = optionsHTML + '<div class="col s2">&nbsp</div>';
-    optionsHTML = optionsHTML + '<div class="col s3">&nbsp';
-    optionsHTML = optionsHTML + '';
-    optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light green"';
-    optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))"><i class="material-icons">add</i></a></div></div>';
+    optionsHTML = optionsHTML + '<div class="col s3">&nbsp</div>';
+    optionsHTML = optionsHTML + '<a class="btn-floating btn-small waves-effect waves-light green" style="float:right"';
+    optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))"><i class="material-icons">add</i></a></div>';
     optionsHTML = optionsHTML + '</td>';
 
     var row = '<tr id="menu-item-'+ ($("#menu-table tr").length) +'"><td><div class="row"><input id="item-'+ ($("#menu-table tr").length) +'" type="text" value=""/></div></td>'
@@ -215,7 +233,6 @@ function saveMenu() {
                     var optMax = $(this).find("input[name='Max']").val();
                     var optName = $(this).find("input[name='Name']").val();
                     if (optName == null) {
-                        alert("null");
                         return;
                     }
                     $(this).find("input[name='Option']").each(function() {
