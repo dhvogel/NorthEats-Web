@@ -1,12 +1,5 @@
-@font-face {
-    font-family: "FuturaLight";
-    src: url("../fonts/FuturaLight.ttf");
-}
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:200);
 
-@font-face {
-    font-family: "FuturaExtended";
-    src: url("../fonts/FuturaExtended.ttf");
-}
 
 @font-face {
     font-family: "FuturaBold";
@@ -14,7 +7,7 @@
 }
 
 body {
-    font-family: "FuturaLight";
+    font-family: "Work Sans", sans-serif;
     color:white;
 }
 
