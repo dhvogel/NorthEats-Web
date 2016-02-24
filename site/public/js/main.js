@@ -98,8 +98,23 @@ function getCurrentOrders() {
                                 }
                             }
                         }
-                        console.log(detailStr)
-                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + detailStr + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
+                        var addressStr = ""
+                        addressStr += object.get('address')
+                        addressStr += "<br />"
+                        addressStr += object.get('town')
+                        addressStr += "<br />"
+                        addressStr += object.get('zip')
+                        addressStr += "<br />"
+                        if (object.get('apt') != null) {
+                            addressStr += "Apt: "
+                            addressStr += object.get('apt')
+                        }
+                        if (object.get('comments') != null) {
+                            addressStr += "<br />"
+                            addressStr += "Comments: "
+                            addressStr += object.get('comments')
+                        }
+                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + detailStr + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + addressStr + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
                    })(jQuery);
            }
         },
