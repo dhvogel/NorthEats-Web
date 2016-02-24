@@ -82,7 +82,24 @@ function getCurrentOrders() {
            for (var i = 0; i < results.length; i++) { 
                var object = results[i];
                    (function($) {
-                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + object.get('details') + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
+                        var details = object.get('details')
+                        var detailStr = ""
+                        for (var j=0; j<details.length; j++) {
+                            detailStr+=details[j][0]
+                            detailStr+="<br />"
+                            for (var k=0; k<details[j][1].length; k++) {
+                                detailStr+="&npsb"
+                                detailStr+=details[j][1][k][0]
+                                detailStr+="<br />"
+                                for (var l=0; l<details[j][1][k][1].length; l++) {
+                                    detailStr+="&npsb&npsb"
+                                    detailStr+=details[j][1][k][1][l]
+                                    detailStr+="<br />"
+                                }
+                            }
+                        }
+                        console.log(detailStr)
+                       $('#order-table').append('<tr><td>' + object.get('createdAt') + '</td><td>' + detailStr + '</td><td>' + object.get('order_total') + '</td><td>' + object.get('delivery') + '</td><td>' + object.get('address') + '</td><td>' + object.get('phone') + '</td><td>' + "not yet" +'</td></tr>');
                    })(jQuery);
            }
         },
