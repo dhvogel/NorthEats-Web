@@ -88,11 +88,11 @@ function getCurrentOrders() {
                             detailStr+=details[j][0]
                             detailStr+="<br />"
                             for (var k=0; k<details[j][1].length; k++) {
-                                detailStr+="&npsb"
+                                detailStr+=" "
                                 detailStr+=details[j][1][k][0]
                                 detailStr+="<br />"
                                 for (var l=0; l<details[j][1][k][1].length; l++) {
-                                    detailStr+="&npsb&npsb"
+                                    detailStr+="  "
                                     detailStr+=details[j][1][k][1][l]
                                     detailStr+="<br />"
                                 }
