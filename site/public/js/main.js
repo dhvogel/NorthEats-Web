@@ -12,6 +12,8 @@ $(window).load(function() {
         $(this).addClass('activeLink');
     })
 
+    console.log("registers js");
+
 
 
 

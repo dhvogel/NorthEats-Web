@@ -1,3 +1,4 @@
+#bundle exec rackup -p 9292 config.ru
 use Rack::Static,
   :urls => ["/images", "/js", "/css"],
   :root => "public"
