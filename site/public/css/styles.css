@@ -23,6 +23,10 @@ div {
     color:black;
 }
 
+.block {
+  height:100%;
+}
+
 .nav-wrapper {
     background-color: #e708a6;
     color:white;
@@ -97,6 +101,13 @@ div {
     padding-top:30px;
 }
 
+.subsection {
+    font-size:30px;
+    text-align: center;
+    padding-top:20px;
+    text-decoration: underline;
+}
+
 .modal {
     color:black;
 }
@@ -105,6 +116,13 @@ div {
     font-size:22px;
 }
 
+.collection {
+  border:none !important;
+}
+
+.collection li {
+  border:none !important;
+}
 
 
 

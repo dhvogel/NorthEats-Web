@@ -12,8 +12,12 @@ $(window).load(function() {
         $(this).addClass('activeLink');
     })
 
-    console.log("registers js");
+    $('.scrollspy').scrollSpy();
+    $('.parallax').parallax();
 
+    var options=[{selector: '#what-we-do', offset: 300, callback: '$("#staggered-list").show(800);Materialize.showStaggeredList("#staggered-list")'},
+                {selector: '#education', offset: 400, callback: '$("#staggered-list-education").show(500);Materialize.showStaggeredList("#staggered-list-education")'}];
+    Materialize.scrollFire(options);
 
 
 
