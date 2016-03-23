@@ -13,7 +13,8 @@ $(window).load(function() {
     })
 
 
-    var options=[{selector: '#what-we-do', offset: 300, callback: '$("#staggered-list").show(800);Materialize.showStaggeredList("#staggered-list")'}];
+    var options=[{selector: '#what-we-do', offset: 300, callback: '$("#people-staggered-list").show(800);Materialize.showStaggeredList("#people-staggered-list")'},
+                 {selector: '#what-we-do', offset: 300, callback: '$("#restaurant-staggered-list").show(800);Materialize.showStaggeredList("#restaurant-staggered-list")'}];
     Materialize.scrollFire(options);
 
 
