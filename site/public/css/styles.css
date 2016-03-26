@@ -9,7 +9,9 @@
 body {
     font-family: "Work Sans", sans-serif;
     color:white;
-    text-decoration: bold
+    text-decoration: bold;
+    padding:0;
+    margin:0;
 }
 
 
