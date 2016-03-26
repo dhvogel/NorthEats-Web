@@ -143,11 +143,13 @@ div {
 }
 
 .bio-title {
-  font-size:18px;
+  font-size:19px;
+  font-weight:900;
 }
 
 .bio-desc {
-  font-size:15px;
+  font-size:16.5px;
+  font-weight: bolder;
 }
 
 .category-button {
