@@ -9,7 +9,9 @@
 body {
     font-family: "Work Sans", sans-serif;
     color:white;
+    text-decoration: bold
 }
+
 
 table {
     color:black;
@@ -24,11 +26,23 @@ div {
 }
 
 .block {
+  height:auto;
+}
+
+.block.static {
   height:100%;
 }
 
+.block.short {
+  height:60%;
+}
+
+.turquoise {
+  background-color: #11a2c1;
+}
+
 .nav-wrapper {
-    background-color: #e708a6;
+    background-color: #11a2c1;
     color:white;
 }
 
@@ -64,7 +78,7 @@ div {
 
 
 .homepage.overlay {
-  background-color: rgba(12,204,160, 0.5);
+  background-color: rgba(12,204,160, 0.7);
   display:block;
   position: absolute;
   top: 0px;
@@ -122,6 +136,33 @@ div {
 
 .collection li {
   border:none !important;
+}
+
+.parallax-container {
+  height:100%;
+}
+
+.bio-title {
+  font-size:18px;
+}
+
+.bio-desc {
+  font-size:15px;
+}
+
+.category-button {
+  margin: 10px;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid #ffffff;
+  width:100px;
+  height:30px;
+}
+
+.category-button:hover{
+    color:black;
+    background: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 

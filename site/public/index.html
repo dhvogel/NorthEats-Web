@@ -5,66 +5,51 @@
         
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/videoStretch.css">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+         <link rel="stylesheet" href="css/materialize.css">
 
 
        
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="js/materialize.js"></script>
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.14.min.js"></script>
         <script src="js/videoStretch.js"></script>
         <script src="js/main.js"></script>
 </head>
 <body>
-<nav >
+  <nav >
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li class="bar-item"><a  style= href="#home">&nbsp&nbsp&nbspLogo&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a style= "padding:6px" href="#home"><img src="images/logo.png" height="50" width="50"></a></li>
         <li class="bar-item"><a href="#what-we-do">&nbsp&nbsp&nbspWhat We Do&nbsp&nbsp&nbsp</a></li>
-        <li class="bar-item"><a href="#why">&nbsp&nbsp&nbspWhy We Do It&nbsp&nbsp&nbsp</a></li>
-        <li class="bar-item"><a href="#why">&nbsp&nbsp&nbspPricing&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a href="#why-we-do-it">&nbsp&nbsp&nbspWhy We Do It&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a href="#who-we-are">&nbsp&nbsp&nbspWho We Are&nbsp&nbsp&nbsp</a></li>
+        <li class="bar-item"><a href="#sign-up">&nbsp&nbsp&nbspSign Up&nbsp&nbsp&nbsp</a></li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="bar-item"><a href="#login" onclick="$('#login').openModal();">&nbsp&nbsp&nbspLog In&nbsp&nbsp&nbsp</a></li>
-        <li class="bar-item"><a href="#signup" onclick="$('#signup').openModal();">&nbsp&nbsp&nbspSign Up&nbsp&nbsp&nbsp</a></li>
       </ul>
     </div>
   </nav>
 
-  
-        
-    <div class="intro-background">
-        
-    <div class="background-video">
-        
-      <video autoplay="" loop muted="" preload="" background="berlin-trim.jpg" class="StretchtoFit" style="transform: translate(0px, 0px);"  id="background-vid">
-        <source src="https://www.dropbox.com/s/tml83ia3obb7fh5/257054577.webm?dl=1" type="video/webm">
-        <source src="https://www.dropbox.com/s/hokv5te85kfzzb0/257054577.mp4?dl=1" type="video/mp4">
-      </video>
     
+  <div class="parallax-container" id="home" style="height:100%">
+      <div class="parallax">
+        <img src="images/intro_cream_of_crop.jpg">
+      </div>
+       <div class="homepage overlay" style="display:inline-flex">
 
-        
-        <div class="homepage overlay" style="display:inline-flex">
-
-             <div class ="container" style="margin:auto">
+          <div class ="container" style="margin:auto">
                 
-                <div class="row">
-                        <span class="techfont white-text title-font center-align" style="text-align:center; display:block; font-size:50px">NorthEats</span>
-                        <span class = "techfont white-text title-font center-align" style="text-align:center; display:block; font-size:20px">Easy mobile ordering in the Mid-Maine area</span>
-                        <!-- Modal Structure -->
-                        <!-- Modal Trigger -->
-  
-                        
-                </div>
-        
-        </div>
-        
-            
-    </div>
-    </div>
-    </div>
+             <span class="techfont white-text title-font center-align" style="text-align:center; display:block; font-size:50px">NorthEats</span>
+              <span class = "techfont white-text title-font center-align" style="text-align:center; display:block; font-size:20px">Easy mobile ordering in the Mid-Maine area</span>
+              <!-- Modal Structure -->
+              <!-- Modal Trigger --> 
 
-    <div class="block white" id="what-we-do">
+        </div>                   
+      </div>
+  </div>
+        
+  <div class="block white" id="what-we-do">
       <div class="container">
         <div class="row">
           <div class="section-title black-text">
@@ -76,7 +61,7 @@
           <div class="col l6 s12 black-text" >
             <div class="row">
               <div class="subsection black-text">
-                People
+                Customers
               </div>
             </div>
             <ul class="collection" id="people-staggered-list" style="display:none"> 
@@ -132,7 +117,7 @@
                               <img src="images/transport.png" class="hide-on-small-only" style="margin-top:10px;" height="40" width="40">
                           </div>
                           <div class="col m8 s12 offset-m2">
-                              <span class="title flow-text valign"><b>It is free for restaurants to partner with NorthEats</b></span>
+                              <span class="title flow-text valign"><b>Save - It is free for restaurants to partner with NorthEats</b></span>
                           </div>
                       </div>
                   </div>
@@ -165,7 +150,94 @@
           </div>
           
       </div>
+  </div>
+
+  <div class="block static turquoise" id='why-we-do-it'>
+     <div class="container">
+        <div class="row">
+          <div class="section-title white-text">
+            <span>Why We Do It</span>
+          </div>
+        </div>
+        <div class="row" style="font-size:20px">
+          <div class="center-align">
+            <!--We see an opportunity to connect restaurants and customers in the Mid Maine market, etc...-->
+          </div>
+        </div>
+      </div> 
+  </div>
+
+  <div class="block white black-text" id="who-we-are">
+     <div class="container center-align">
+        <div class="row">
+          <div class="section-title black-text">
+            <span>Who We Are</span>
+          </div>
+        </div>
+        <div class="row" style="margin-top:50px">
+          <div class="col l5 m12 s12">
+            <div class="row">
+              <img src="images/DanHeadshot.png" class="circle hide-on-med-and-down" style="margin:0 auto; display:block">
+            </div>
+            <div class="row bio-title">
+              <b>Dan Vogel - Colby College Class of 2016</b>
+            </div>
+            <div class="row bio-desc">
+              <b>Dan is a computer science major, who has experience working at top companies such as Microsoft and Capital One. He has recently launched his own iOS app, Colby Ice Cream, which tells students what ice cream flavors each dining hall has.<b>
+            </div>
+          </div>
+          <div class="col l5 offset-l2 m12 s12">
+            <div class="row">
+              *Scott Headshot*
+            </div>
+            <div class="row bio-title">
+              <b>Scott Lehman - Colby College Class of 2016</b>
+            </div>
+            <div class="row bio-desc">
+              Scott Lehman is an economics major at Colby and is also completing an engineering degree at Dartmouth through the Thayer School of Engineering Dual-Degree program. He developed and maintains the yourColby app, which almost half of Colby uses on a daily basis to check dining hall menus, sports scores, and other things going on at Colby. The app has been downloaded more than twenty-two hundred times since it was launched in 2014.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+         <div class="row" style="margin-top:100px">
+            *Noah Headshot*
+          </div>
+          <div class="row bio-title">
+            <b>Noah Tocci - Colby College Class of 2017</b>
+          </div>
+          <div class="row bio-desc">
+            Noah Bio
+          </div>
+        </div>
+      </div> 
+  </div>
+
+  <div class="block turquoise short white-text" id="sign-up">
+    <div class="container center-align">
+        <div class="row">
+
+          <div class="section-title">
+            <span>Restaurant Sign Up</span>
+          </div>
+        </div>
+        <div class="row" style="font-size:18px">
+          Are you a restaurant interested in partnering with NorthEats? Give us your email and we'll be in touch.
+        </div>
+        <div class="row">
+          <div class="col s4 offset-s4">
+            <div class="row">
+              <div class="input-field">
+                <input id="rest-email" type="email" class="validate" style="border-bottom:thin white solid">
+                <label for="rest-email" style="color:white;text-align:center">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <a onclick="alert('clicked');"><button type="submit" class="category-button">Submit</button></a>
+          </div>
+        </div>
     </div>
+  </div>
+
 
   <div id="login" class="modal">
     <div class="modal-content">

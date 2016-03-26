@@ -1,9 +1,9 @@
 $(window).load(function() {
-    Parse.initialize("mU9OJrv5bhGXeIGifLASNHCu5zCubALNwBB7UGHR", "OiOugsAYuAlwCNMXOw3ln5H9B1m7JrSFLDHvQ6XD");
+    // Parse.initialize("mU9OJrv5bhGXeIGifLASNHCu5zCubALNwBB7UGHR", "OiOugsAYuAlwCNMXOw3ln5H9B1m7JrSFLDHvQ6XD");
 
-    if (!Parse.User.current() && window.location.pathname.split('/').pop() != "index.html") {
-        window.location.href = "index.html"
-    }
+    // if (!Parse.User.current() && window.location.pathname.split('/').pop() != "index.html") {
+    //     window.location.href = "index.html"
+    // }
 
     $('#first-active').addClass('activeLink');
 
@@ -12,9 +12,9 @@ $(window).load(function() {
         $(this).addClass('activeLink');
     })
 
-
-    var options=[{selector: '#what-we-do', offset: 300, callback: '$("#people-staggered-list").show(800);Materialize.showStaggeredList("#people-staggered-list")'},
-                 {selector: '#what-we-do', offset: 300, callback: '$("#restaurant-staggered-list").show(800);Materialize.showStaggeredList("#restaurant-staggered-list")'}];
+     $('.parallax').parallax();
+    var options=[{selector: '#what-we-do', offset: 400, callback: '$("#people-staggered-list").show(800);Materialize.showStaggeredList("#people-staggered-list")'},
+                 {selector: '#what-we-do', offset: 400, callback: '$("#restaurant-staggered-list").show(800);Materialize.showStaggeredList("#restaurant-staggered-list")'}];
     Materialize.scrollFire(options);
 
 
