@@ -1,9 +1,9 @@
 $(window).load(function() {
-    // Parse.initialize("mU9OJrv5bhGXeIGifLASNHCu5zCubALNwBB7UGHR", "OiOugsAYuAlwCNMXOw3ln5H9B1m7JrSFLDHvQ6XD");
+    Parse.initialize("mU9OJrv5bhGXeIGifLASNHCu5zCubALNwBB7UGHR", "OiOugsAYuAlwCNMXOw3ln5H9B1m7JrSFLDHvQ6XD");
 
-    // if (!Parse.User.current() && window.location.pathname.split('/').pop() != "index.html") {
-    //     window.location.href = "index.html"
-    // }
+    if (!Parse.User.current() && window.location.pathname.split('/').pop() != "index.html") {
+        window.location.href = "index.html"
+    }
 
     $('#first-active').addClass('activeLink');
 
@@ -21,6 +21,43 @@ $(window).load(function() {
 
 
 })
+
+function recordEmail(type, email) {
+    if (type == "Customer") {
+        var Customers = Parse.Object.extend("InterestedCustomers");
+        var customer = new Customers();
+
+        customer.set("Email", email);
+        
+        customer.save(null, {
+           success: function(menuItem) {
+                alert('Email submitted! We\'ll be in touch.');
+                $('#cust-email').val("");
+            },
+            error: function (menuItem, error) {
+                alert('Failed to create new object, with error code: ' + error.message);
+                return;
+            }
+        })  
+    }
+    else if (type == "Restaurant") {
+        var Restaurants = Parse.Object.extend("InterestedRestaurants");
+        var restaurant = new Restaurants();
+
+        restaurant.set("Email", email);
+        
+        restaurant.save(null, {
+           success: function(menuItem) {
+            alert('Email submitted! We\'ll be in touch.');
+            $('#rest-email').val("");
+        },
+            error: function (menuItem, error) {
+                alert('Failed to create new object, with error code: ' + error.message);
+                return;
+            }
+        }) 
+    }
+}
 
 this.optioncount = 1;
 

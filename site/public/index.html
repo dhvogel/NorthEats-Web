@@ -21,7 +21,6 @@
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li class="bar-item"><a style= "padding:6px" href="#home"><img src="images/logo.png" height="50" width="50"></a></li>
         <li class="bar-item"><a href="#what-we-do">&nbsp&nbsp&nbspWhat We Do&nbsp&nbsp&nbsp</a></li>
-        <li class="bar-item"><a href="#why-we-do-it">&nbsp&nbsp&nbspWhy We Do It&nbsp&nbsp&nbsp</a></li>
         <li class="bar-item"><a href="#who-we-are">&nbsp&nbsp&nbspWho We Are&nbsp&nbsp&nbsp</a></li>
         <li class="bar-item"><a href="#sign-up">&nbsp&nbsp&nbspSign Up&nbsp&nbsp&nbsp</a></li>
       </ul>
@@ -152,22 +151,6 @@
       </div>
   </div>
 
-  <div class="block static turquoise" id='why-we-do-it'>
-     <div class="container">
-        <div class="row">
-          <div class="section-title white-text">
-            <span>Why We Do It</span>
-          </div>
-        </div>
-        <div class="row" style="font-size:20px">
-          <div class="center-align">
-            *Coming soon*
-            <!--We see an opportunity to connect restaurants and customers in the Mid Maine market, etc...-->
-          </div>
-        </div>
-      </div> 
-  </div>
-
   <div class="block white black-text" id="who-we-are">
      <div class="container center-align">
         <div class="row">
@@ -184,7 +167,7 @@
               <b>Dan Vogel - Colby College Class of 2016</b>
             </div>
             <div class="row bio-desc">
-              <b>Dan is a computer science major, who has experience working at top companies such as Microsoft and Capital One. He has recently launched his own iOS app, Colby Ice Cream, which tells students what ice cream flavors each dining hall has.<b>
+              <b>Dan is a computer science major, who has experience working at top companies such as Microsoft and Capital One. He has recently launched his own iOS app, Colby Ice Cream, which tells students what ice cream flavors each dining hall has.</b>
             </div>
           </div>
           <div class="col l5 offset-l2 m12 s12">
@@ -213,7 +196,7 @@
       </div> 
   </div>
 
-  <div class="block turquoise white-text" id="sign-up">
+  <div class="block white black-text" id="sign-up">
     <div class="container center-align">
         <div class="row">
           <div class="col l5 m12 s12">
@@ -230,15 +213,14 @@
             <div class="row">
               <div class="col s8 offset-s2">
                 <div class="row">
-                  *Coming soon*
-                  <!-- <div class="input-field">
-                    <input id="rest-email" type="email" class="validate center-align" style="border-bottom:thin white solid">
-                    <label for="rest-email" style="color:white;text-align:center">Email</label>
-                  </div> -->
+                  <div class="input-field">
+                    <input id="rest-email" type="email" class="validate center-align" style="border-bottom:thin black solid">
+                    <label for="rest-email" style="color:black;text-align:center">Email</label>
+                  </div>
                 </div>
-                <!-- <div class="row">
-                  <a onclick="alert('clicked');"><button type="submit" class="category-button">Submit</button></a>
-              </div> -->
+                <div class="row">
+                  <a onclick="recordEmail('Restaurant', $('#rest-email').val());"><button type="submit" class="category-button">Submit</button></a>
+              </div>
             </div>
           </div>
         </div>
@@ -256,15 +238,14 @@
             <div class="row">
               <div class="col s8 offset-s2">
                 <div class="row">
-                  *Coming soon*
-                  <!-- <div class="input-field">
-                    <input id="rest-email" type="email" class="validate center-align" style="border-bottom:thin white solid">
-                    <label for="rest-email" style="color:white;text-align:center">Email</label>
-                  </div> -->
+                  <div class="input-field">
+                    <input id="cust-email" type="email" class="validate center-align" style="border-bottom:thin black solid">
+                    <label for="cust-email" style="color:black;text-align:center">Email</label>
+                  </div>
                 </div>
-                <!-- <div class="row">
-                  <a onclick="alert('clicked');"><button type="submit" class="category-button">Submit</button></a>
-              </div> -->
+                <div class="row">
+                  <a onclick="recordEmail('Customer', $('#cust-email').val());"><button type="submit" class="category-button">Submit</button></a>
+              </div>
             </div>
           </div>
         </div>
