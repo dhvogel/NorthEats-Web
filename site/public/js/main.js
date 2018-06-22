@@ -1,9 +1,5 @@
 $(window).load(function() {
-    Parse.initialize("mU9OJrv5bhGXeIGifLASNHCu5zCubALNwBB7UGHR", "OiOugsAYuAlwCNMXOw3ln5H9B1m7JrSFLDHvQ6XD");
 
-    if (!Parse.User.current() && window.location.pathname.split('/').pop() != "index.html") {
-        window.location.href = "index.html"
-    }
 
     $('#first-active').addClass('activeLink');
 
@@ -28,7 +24,7 @@ function recordEmail(type, email) {
         var customer = new Customers();
 
         customer.set("Email", email);
-        
+
         customer.save(null, {
            success: function(menuItem) {
                 alert('Email submitted! We\'ll be in touch.');
@@ -38,14 +34,14 @@ function recordEmail(type, email) {
                 alert('Failed to create new object, with error code: ' + error.message);
                 return;
             }
-        })  
+        })
     }
     else if (type == "Restaurant") {
         var Restaurants = Parse.Object.extend("InterestedRestaurants");
         var restaurant = new Restaurants();
 
         restaurant.set("Email", email);
-        
+
         restaurant.save(null, {
            success: function(menuItem) {
             alert('Email submitted! We\'ll be in touch.');
@@ -55,7 +51,7 @@ function recordEmail(type, email) {
                 alert('Failed to create new object, with error code: ' + error.message);
                 return;
             }
-        }) 
+        })
     }
 }
 
@@ -120,7 +116,7 @@ function getCurrentOrders() {
     query.descending("createdAt");
     query.find({
         success: function(results) {
-           for (var i = 0; i < results.length; i++) { 
+           for (var i = 0; i < results.length; i++) {
                var object = results[i];
                    (function($) {
                         var details = object.get('details')
@@ -173,7 +169,7 @@ function getOrderHistory() {
     query.descending("createdAt");
     query.find({
         success: function(results) {
-           for (var i = 0; i < results.length; i++) { 
+           for (var i = 0; i < results.length; i++) {
                var object = results[i];
                    (function($) {
                         var details = object.get('details')
@@ -224,7 +220,7 @@ function getCurrentMenu() {
     var query = new Parse.Query(CurrentOrders);
     query.find({
         success: function(results) {
-           for (var i = 0; i < results.length; i++) { 
+           for (var i = 0; i < results.length; i++) {
                 var object = results[i];
                 var optionsHTML = '<td id="optionstd-' + $("#menu-table tr").length + '">';
                 for (var k=0; k<object.get("Options").length; k++) {
@@ -237,7 +233,7 @@ function getCurrentMenu() {
                     }
                     optionsHTML = optionsHTML + '</div><div class="col s2"><a class="btn-floating btn-small waves-effect waves-light red" onclick="removeOption($(this))"><i class="material-icons">close</i></a></div></div>'
 
-                        
+
                 }
                 optionsHTML = optionsHTML + '<div class="col s2"><a  style="float:right" class="btn-floating btn-small waves-effect waves-light green"';
                         optionsHTML = optionsHTML + 'id="' + $("#menu-table tr").length +'" onclick="showOptionMenu($(this))">\
@@ -316,7 +312,7 @@ function saveMenu() {
                 results[i].destroy();
             }
 
-            var rows = $("#menu-table tr").length   
+            var rows = $("#menu-table tr").length
 
             for (var i=0; i<rows; i++){
                 var item = $('#item-' + i).val();
@@ -331,7 +327,7 @@ function saveMenu() {
                     return;
                 }
                 var options = []
-                
+
                 $("#optionstd-" + i + "  > div").each(function() {
                     var curOpts = [];
                     var optMin = $(this).find("input[name='Min']").val();
@@ -346,7 +342,7 @@ function saveMenu() {
                     options.push([[Number(optMin), Number(optMax)], optName, curOpts]);
 
                 });
-                
+
 
                 var MenuItem = Parse.Object.extend("Amicis");
                 var menuItem = new MenuItem();
@@ -364,9 +360,9 @@ function saveMenu() {
                         alert('Failed to create new object, with error code: ' + error.message);
                         return;
                     }
-                })  
+                })
             }
-            alert("Menu Updated!");        
+            alert("Menu Updated!");
         },
         error: function(error) {
             alert("Error: " + error.message);
@@ -377,7 +373,7 @@ function saveMenu() {
 function addOption() {
 
     var inputid = "option-item-" + this.optioncount;
-    var divid = "option-input-" + this.optioncount; 
+    var divid = "option-input-" + this.optioncount;
     $('#option-items').append('<div class="input-field" id ="' + divid + '"><input id="' + inputid + '" type="text" class="validate"><label for="' + inputid +'" >Option Item</label></div>');
     this.optioncount++;
 }
@@ -396,7 +392,7 @@ function addOptionToMenu(row) {
         optionsHTML = optionsHTML + '<div class="col s1"><input type="text" name="Max" value="' + $('#option-maximum').val()+ '" readonly/></div>';
         optionsHTML = optionsHTML + '<div class="col s3">';
         for (var k=0; k<this.optioncount; k++) {
-            var divid = "#option-item-" + k; 
+            var divid = "#option-item-" + k;
             if ($(divid).val() == "") {
                 alert("Must enter a value for options");
                 return
@@ -411,4 +407,3 @@ function addOptionToMenu(row) {
 function removeOption(sender) {
     sender.parent().parent().remove()
 }
-
